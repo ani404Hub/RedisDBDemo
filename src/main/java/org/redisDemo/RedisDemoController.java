@@ -2,6 +2,7 @@ package org.redisDemo;
 
 import org.redisDemo.entity.ProductItem;
 import org.redisDemo.repo.ProductDao;
+import org.redisDemo.service.ProductItemService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -20,10 +21,12 @@ class RedisDemoController {
 
     @Autowired
     private ProductDao dao;
+    @Autowired
+    private ProductItemService prodService;
 
     @PostMapping
     public ProductItem save(@RequestBody ProductItem prodItem){
-        return dao.saveProd(prodItem);                                                  //calling dao layer directly, Didn't create service layer, not a good coding standard
+        return prodService.saveProductItem(prodItem);                                   //calling service layer is good coding standard instead calling dao layer to save data
     }
 
     @GetMapping

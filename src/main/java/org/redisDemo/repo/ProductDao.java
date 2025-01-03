@@ -34,4 +34,9 @@ public class ProductDao {
         return "Product Deleted";
     }
 
+    public long generateNextId() {
+        long genId = templ.opsForValue().increment("product:id:counter", 100);
+        return genId;
+    }
+
 }
