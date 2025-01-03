@@ -11,7 +11,7 @@ public class ProductItemService {
     private ProductDao dao;
 
     public ProductItem saveProductItem(ProductItem prodItem){
-        prodItem.setProdId(dao.generateNextId());
+        prodItem.setProdId(dao.generateNextId());                       //Set generated sequence as product Item serial Id
         return dao.saveProd(prodItem);
     }
 }
