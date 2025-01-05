@@ -35,7 +35,7 @@ public class ProductDao {
     }
 
     public long generateNextId() {
-        long genId = templ.opsForValue().increment("product:id:counter", 1001); //Generate sequence using redis template increment counter
+        long genId = templ.opsForValue().increment("product:id:counter", 1001L); //Generate sequence using redis template increment counter & naming convention based on used case
         return genId;
     }
 
